@@ -45,42 +45,44 @@ Sistem memiliki 2 (dua) aktor utama:
 2. **Administrator (Kepala Sarpras / BMN Vokasi USU):** Mengelola master data fasilitas (CRUD), memverifikasi berkas dan pembayaran, melakukan *Approve / Reject* dengan catatan resmi, memantau status *check-in*, melihat grafik analitik, serta mencetak laporan pemakaian berformat PDF/Excel.
 
 ```mermaid
-usecaseDiagram
-    actor "Mahasiswa / Ormawa" as User
-    actor "Admin Sarpras USU" as Admin
+flowchart LR
+    subgraph Aktor ["Aktor Pengguna"]
+        User["Mahasiswa / Ormawa"]
+        Admin["Admin Sarpras USU"]
+    end
 
-    package "Sistem USU SmartFacility" {
-        usecase "Registrasi & Login Akun" as UC_Login
-        usecase "Jelajahi Fasilitas & Spesifikasi" as UC_Explore
-        usecase "Cek Kalender Real-Time" as UC_Calendar
-        usecase "Pengajuan E-Booking Fasilitas" as UC_Booking
-        usecase "Validasi Anti-Bentrok Jadwal" as UC_CheckSlot
-        usecase "Transaksi E-Payment (QRIS/VA)" as UC_Payment
-        usecase "Akses E-Ticket & QR Code" as UC_Ticket
-        usecase "Verifikasi Tiket & Check-in Petugas" as UC_Verify
-        usecase "Approval / Penolakan Reservasi" as UC_Approval
-        usecase "Kelola Fasilitas Kampus (CRUD)" as UC_CRUD_Fac
-        usecase "Dashboard KPI & Grafik Analitik" as UC_Dashboard
-        usecase "Rekapitulasi Laporan (PDF/Excel)" as UC_Reports
-    }
+    subgraph System ["Sistem E-Booking & E-Payment (USU SmartFacility)"]
+        UC1(["Registrasi & Login Akun"])
+        UC2(["Jelajahi Fasilitas & Detail Spesifikasi"])
+        UC3(["Pantau Kalender Ketersediaan Real-Time"])
+        UC4(["Pengajuan E-Booking Fasilitas"])
+        UC5(["Validasi Otomatis Anti-Bentrok Jadwal"])
+        UC6(["Transaksi E-Payment: QRIS / BNI VA"])
+        UC7(["Akses E-Ticket & Unduh QR Code"])
+        UC8(["Verifikasi Tiket & Check-in Mandiri"])
+        UC9(["Approval / Penolakan Reservasi"])
+        UC10(["Kelola Data Fasilitas CRUD"])
+        UC11(["Dashboard KPI & Grafik Analitik"])
+        UC12(["Rekapitulasi Laporan PDF & Excel"])
+    end
 
-    User --> UC_Login
-    User --> UC_Explore
-    User --> UC_Calendar
-    User --> UC_Booking
-    User --> UC_Payment
-    User --> UC_Ticket
+    User --> UC1
+    User --> UC2
+    User --> UC3
+    User --> UC4
+    User --> UC6
+    User --> UC7
 
-    Admin --> UC_Login
-    Admin --> UC_Approval
-    Admin --> UC_Verify
-    Admin --> UC_CRUD_Fac
-    Admin --> UC_Dashboard
-    Admin --> UC_Reports
+    Admin --> UC1
+    Admin --> UC8
+    Admin --> UC9
+    Admin --> UC10
+    Admin --> UC11
+    Admin --> UC12
 
-    UC_Booking ..> UC_CheckSlot : <<include>>
-    UC_Booking ..> UC_Payment : <<include>>
-    UC_Approval ..> UC_Ticket : <<triggers>>
+    UC4 -.->|include| UC5
+    UC4 -.->|include| UC6
+    UC9 -.->|triggers| UC7
 ```
 
 ---
@@ -100,7 +102,7 @@ erDiagram
         string name
         string email UK
         string password
-        string role "admin / user"
+        string role "admin or user"
         string nim_nip
         string department
         string phone
@@ -111,14 +113,14 @@ erDiagram
         int id PK
         string code UK
         string name
-        string category "Laboratorium / Aula / Lapangan / Ruang Seminar"
+        string category "Kategori Fasilitas Kampus"
         string building
         int capacity
         decimal hourly_rate
         text description
         text amenities
         string image
-        string status "available / maintenance"
+        string status "available or maintenance"
         datetime created_at
     }
 
@@ -136,15 +138,15 @@ erDiagram
         int attendee_count
         text additional_facilities
         decimal total_amount
-        string payment_status "unpaid / pending_verification / paid / free_academic"
-        string payment_method "qris / bni_va / gopay / transfer_manual"
+        string payment_status "unpaid or paid"
+        string payment_method "qris or bni_va"
         string payment_ref
         string payment_proof
         datetime paid_at
-        string booking_status "pending / approved / rejected / completed / cancelled"
+        string booking_status "pending or approved"
         text admin_notes
         string qr_code_token UK
-        string check_in_status "not_checked_in / checked_in"
+        string check_in_status "not_checked_in or checked_in"
         datetime checked_in_at
         datetime created_at
     }
@@ -153,7 +155,7 @@ erDiagram
         int id PK
         int user_id FK
         int booking_id FK
-        string channel "whatsapp / email / system"
+        string channel "whatsapp or email"
         string title
         text message
         string recipient
@@ -174,15 +176,15 @@ flowchart TD
     B --> C[Input Jam Mulai & Jam Selesai]
     C --> D{Cek Bentrok Jadwal?}
     
-    D -- Bentrok / Terisi --> E[Tampilkan Peringatan Konflik Jadwal]
+    D -->|Bentrok / Terisi| E[Tampilkan Peringatan Konflik Jadwal]
     E --> C
     
-    D -- Tersedia --> F[Input Detail Acara & Estimasi Peserta]
+    D -->|Tersedia| F[Input Detail Acara & Estimasi Peserta]
     F --> G[Hitung Total Biaya: Durasi x Tarif]
     G --> H{Kategori Acara?}
     
-    H -- Bebas Biaya Akademik --> I[Status Pembayaran: Free Academic]
-    H -- Berbayar / Sewa --> J[Pilih Metode E-Payment: QRIS / BNI VA / E-Wallet]
+    H -->|Bebas Biaya Akademik| I[Status Pembayaran: Free Academic]
+    H -->|Berbayar / Sewa| J[Pilih Metode E-Payment: QRIS / BNI VA / E-Wallet]
     J --> K[Selesaikan Pembayaran via Gateway Simulator]
     K --> L[Status Pembayaran: Paid Terverifikasi]
     
@@ -190,19 +192,19 @@ flowchart TD
     L --> M
     
     M --> N{Keputusan Admin Sarpras?}
-    N -- Ditolak (Reject) --> O[Input Alasan Penolakan]
-    O --> P[Kirim Notifikasi WA/Email ke Pemohon]
+    N -->|Ditolak / Reject| O[Input Alasan Penolakan]
+    O --> P[Kirim Notifikasi WA / Email ke Pemohon]
     P --> EndBatal([Selesai / Ditolak])
     
-    N -- Disetujui (Approve) --> Q[Generate & Aktifkan E-Ticket QR Code]
+    N -->|Disetujui / Approve| Q[Generate & Aktifkan E-Ticket QR Code]
     Q --> R[Kirim Notifikasi WhatsApp & Email Otomatis]
-    R --> S[Pemohon Mengunduh Tiket PDF / Membawa QR di Smartphone]
+    R --> S[Pemohon Mengunduh Tiket PDF / Membawa QR di HP]
     
     S --> T[Tiba di Lokasi Fasilitas Kampus]
     T --> U[Petugas / Satpam Scan QR Code Tiket]
     U --> V{Status Tiket Sah & Approved?}
-    V -- Ya --> W[Konfirmasi Check-In: Akses Ruangan Dibuka]
-    V -- Tidak Valid --> X[Akses Ditolak]
+    V -->|Ya| W[Konfirmasi Check-In: Akses Ruangan Dibuka]
+    V -->|Tidak Valid| X[Akses Ditolak]
     
     W --> Y[Acara Selesai: Admin Tandai Completed]
     Y --> Z[Data Masuk Rekap Laporan Keuangan Sarpras]
