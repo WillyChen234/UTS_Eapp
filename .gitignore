@@ -1,0 +1,12 @@
+# Archives
+*.zip
+*.tar.gz
+*.rar
+
+# Logs & temp
+*.log
+.tempmediaStorage/
+
+# OS metadata
+Thumbs.db
+.DS_Store

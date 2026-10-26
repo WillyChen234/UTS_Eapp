@@ -1,0 +1,628 @@
+/* assets/css/style.css - Sistem Informasi E-Booking & E-Payment Fasilitas Kampus USU */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+    --primary: #057a55;
+    --primary-dark: #03543f;
+    --primary-light: #def7ec;
+    --primary-accent: #10b981;
+    --secondary: #d97706;
+    --secondary-light: #fef3c7;
+    --dark: #0f172a;
+    --dark-muted: #334155;
+    --text-main: #1e293b;
+    --text-muted: #64748b;
+    --bg-light: #f8fafc;
+    --surface: #ffffff;
+    --border-color: #e2e8f0;
+    --radius-sm: 8px;
+    --radius-md: 14px;
+    --radius-lg: 20px;
+    --radius-xl: 28px;
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+    --shadow-md: 0 4px 16px -2px rgba(0,0,0,0.08), 0 2px 6px -1px rgba(0,0,0,0.04);
+    --shadow-lg: 0 12px 32px -4px rgba(15,23,42,0.12), 0 4px 12px -2px rgba(15,23,42,0.06);
+    --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--text-main);
+    background-color: var(--bg-light);
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 700;
+    color: var(--dark);
+    letter-spacing: -0.02em;
+    line-height: 1.3;
+}
+
+a {
+    color: var(--primary);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+a:hover {
+    color: var(--primary-dark);
+}
+
+/* Top Campus Brand Bar */
+.top-brand-bar {
+    background: linear-gradient(90deg, #03543f 0%, #057a55 100%);
+    color: #ffffff;
+    font-size: 0.82rem;
+    padding: 6px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.15);
+}
+
+.top-brand-bar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Modern Navbar */
+.navbar-custom {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border-color);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+}
+
+.navbar-brand-content {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.brand-logo-badge {
+    width: 44px;
+    height: 44px;
+    background: linear-gradient(135deg, #057a55 0%, #10b981 100%);
+    color: #ffffff;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 1.25rem;
+    box-shadow: 0 4px 10px rgba(5, 122, 85, 0.35);
+}
+
+.brand-text-title {
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: var(--dark);
+    line-height: 1.1;
+}
+
+.brand-text-sub {
+    font-size: 0.75rem;
+    color: var(--primary);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.nav-link-custom {
+    font-weight: 600;
+    color: var(--text-muted) !important;
+    padding: 8px 16px !important;
+    border-radius: var(--radius-sm);
+    transition: var(--transition);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.nav-link-custom:hover, .nav-link-custom.active {
+    color: var(--primary) !important;
+    background: var(--primary-light);
+}
+
+/* Hero Section */
+.hero-section {
+    position: relative;
+    padding: 70px 0 80px;
+    background: radial-gradient(circle at top right, rgba(16, 185, 129, 0.12) 0%, rgba(248, 250, 252, 1) 60%),
+                linear-gradient(180deg, #f0fdf4 0%, #f8fafc 100%);
+    overflow: hidden;
+}
+
+.hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 14px;
+    background: #def7ec;
+    color: #03543f;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    margin-bottom: 18px;
+    border: 1px solid rgba(5, 122, 85, 0.2);
+}
+
+.hero-title {
+    font-size: 3rem;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1.15;
+    margin-bottom: 20px;
+    color: #0f172a;
+}
+
+.hero-title .text-highlight {
+    background: linear-gradient(135deg, #057a55 0%, #10b981 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero-desc {
+    font-size: 1.15rem;
+    color: var(--text-muted);
+    max-width: 620px;
+    margin-bottom: 32px;
+}
+
+/* Feature Cards & Glass Components */
+.card-facility {
+    background: var(--surface);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.card-facility:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-lg);
+    border-color: rgba(5, 122, 85, 0.3);
+}
+
+.card-facility-img-wrap {
+    position: relative;
+    height: 220px;
+    overflow: hidden;
+    background: #0f172a;
+}
+
+.card-facility-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.card-facility:hover .card-facility-img-wrap img {
+    transform: scale(1.06);
+}
+
+.badge-category {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    background: rgba(15, 23, 42, 0.75);
+    backdrop-filter: blur(8px);
+    color: #ffffff;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 5px 12px;
+    border-radius: 999px;
+    letter-spacing: 0.3px;
+}
+
+.badge-status-chip {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 5px 12px;
+    border-radius: 999px;
+}
+
+.badge-status-available {
+    background: #def7ec;
+    color: #03543f;
+    border: 1px solid #31c48d;
+}
+
+.badge-status-maintenance {
+    background: #fde8e8;
+    color: #9b1c1c;
+    border: 1px solid #f98080;
+}
+
+.card-facility-body {
+    padding: 22px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.facility-rate-tag {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--primary);
+}
+
+.facility-rate-unit {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+/* Custom Buttons */
+.btn-primary-usu {
+    background: linear-gradient(135deg, #057a55 0%, #046c4e 100%);
+    color: #ffffff !important;
+    font-weight: 700;
+    padding: 10px 22px;
+    border-radius: var(--radius-sm);
+    border: none;
+    box-shadow: 0 4px 12px rgba(5, 122, 85, 0.25);
+    transition: var(--transition);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-primary-usu:hover {
+    background: linear-gradient(135deg, #046c4e 0%, #03543f 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(5, 122, 85, 0.35);
+}
+
+.btn-secondary-usu {
+    background: #ffffff;
+    color: var(--dark) !important;
+    font-weight: 700;
+    padding: 10px 22px;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-secondary-usu:hover {
+    background: #f8fafc;
+    border-color: #cbd5e1;
+    transform: translateY(-2px);
+}
+
+.btn-gold-usu {
+    background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+    color: #ffffff !important;
+    font-weight: 700;
+    padding: 10px 22px;
+    border-radius: var(--radius-sm);
+    border: none;
+    box-shadow: 0 4px 12px rgba(217, 119, 6, 0.25);
+    transition: var(--transition);
+}
+
+.btn-gold-usu:hover {
+    background: linear-gradient(135deg, #d97706 0%, #b45309 100%);
+    transform: translateY(-2px);
+}
+
+/* Status Badges */
+.badge-booking {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    padding: 5px 12px;
+    border-radius: 999px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.badge-pending {
+    background: #fef3c7;
+    color: #92400e;
+    border: 1px solid #fde68a;
+}
+
+.badge-approved {
+    background: #def7ec;
+    color: #03543f;
+    border: 1px solid #84e1bc;
+}
+
+.badge-rejected {
+    background: #fde8e8;
+    color: #9b1c1c;
+    border: 1px solid #f8b4b4;
+}
+
+.badge-completed {
+    background: #e1effe;
+    color: #1e429f;
+    border: 1px solid #a4cafe;
+}
+
+.badge-cancelled {
+    background: #f3f4f6;
+    color: #4b5563;
+    border: 1px solid #e5e7eb;
+}
+
+/* E-Payment Cards */
+.payment-method-card {
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 16px;
+    cursor: pointer;
+    transition: var(--transition);
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.payment-method-card:hover {
+    border-color: #10b981;
+    background: #f0fdf4;
+}
+
+.payment-method-card.selected {
+    border-color: var(--primary);
+    background: #def7ec;
+    box-shadow: 0 4px 14px rgba(5, 122, 85, 0.15);
+}
+
+.payment-icon-box {
+    width: 48px;
+    height: 48px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.35rem;
+    background: #f1f5f9;
+}
+
+/* E-Ticket Styling */
+.ticket-wrapper {
+    max-width: 680px;
+    margin: 30px auto;
+    background: #ffffff;
+    border-radius: 20px;
+    box-shadow: var(--shadow-lg);
+    border: 1px solid var(--border-color);
+    position: relative;
+    overflow: hidden;
+}
+
+.ticket-header {
+    background: linear-gradient(135deg, #03543f 0%, #057a55 100%);
+    color: #ffffff;
+    padding: 24px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.ticket-body {
+    padding: 30px;
+}
+
+.ticket-perforation {
+    position: relative;
+    height: 24px;
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ticket-perforation::before, .ticket-perforation::after {
+    content: '';
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    background: var(--bg-light);
+    border-radius: 50%;
+    top: 0;
+}
+
+.ticket-perforation::before {
+    left: -12px;
+}
+
+.ticket-perforation::after {
+    right: -12px;
+}
+
+.ticket-perforation-line {
+    width: 100%;
+    border-bottom: 2px dashed #cbd5e1;
+}
+
+.ticket-info-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin: 20px 0;
+}
+
+.ticket-label {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.ticket-value {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--dark);
+}
+
+.ticket-stamp {
+    position: absolute;
+    right: 30px;
+    bottom: 30px;
+    border: 3px solid #057a55;
+    color: #057a55;
+    padding: 6px 14px;
+    font-weight: 800;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    transform: rotate(-12deg);
+    border-radius: 6px;
+    opacity: 0.85;
+    pointer-events: none;
+}
+
+/* FullCalendar Custom Theme */
+.fc {
+    font-family: inherit !important;
+}
+
+.fc .fc-toolbar-title {
+    font-size: 1.35rem !important;
+    font-weight: 800 !important;
+    color: var(--dark);
+}
+
+.fc .fc-button-primary {
+    background-color: var(--primary) !important;
+    border-color: var(--primary) !important;
+    border-radius: 8px !important;
+    font-weight: 600 !important;
+    text-transform: capitalize !important;
+}
+
+.fc .fc-button-primary:hover {
+    background-color: var(--primary-dark) !important;
+    border-color: var(--primary-dark) !important;
+}
+
+.fc-event {
+    border-radius: 6px !important;
+    padding: 3px 6px !important;
+    font-weight: 600 !important;
+    border: none !important;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+    cursor: pointer;
+}
+
+/* Admin Sidebar & Tables */
+.admin-card-stat {
+    background: #ffffff;
+    border-radius: var(--radius-md);
+    padding: 24px;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    transition: var(--transition);
+}
+
+.admin-card-stat:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+}
+
+.stat-icon-wrapper {
+    width: 56px;
+    height: 56px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.6rem;
+}
+
+.custom-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: #ffffff;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+}
+
+.custom-table th {
+    background: #f8fafc;
+    color: var(--dark-muted);
+    font-weight: 700;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 14px 18px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.custom-table td {
+    padding: 14px 18px;
+    border-bottom: 1px solid var(--border-color);
+    color: var(--text-main);
+    font-size: 0.9rem;
+    vertical-align: middle;
+}
+
+.custom-table tr:last-child td {
+    border-bottom: none;
+}
+
+.custom-table tr:hover td {
+    background: #fdfdfd;
+}
+
+/* Print CSS */
+@media print {
+    body {
+        background: #ffffff !important;
+        color: #000000 !important;
+    }
+    .no-print, .navbar-custom, .top-brand-bar, footer, .btn {
+        display: none !important;
+    }
+    .ticket-wrapper {
+        box-shadow: none !important;
+        border: 2px solid #000000 !important;
+        margin: 0 !important;
+        max-width: 100% !important;
+    }
+    .ticket-header {
+        background: #03543f !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+    .print-only {
+        display: block !important;
+    }
+}
