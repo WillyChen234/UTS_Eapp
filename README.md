@@ -286,32 +286,3 @@ Berikut adalah daftar dokumentasi halaman antarmuka sistem yang telah diuji dan 
 | **Ormawa Kampus** | HIMATIF USU (Ketua Kevin) | `himatif@usu.ac.id` | `user123` | Simulasi Kegiatan Himpunan Mahasiswa TI, Booking Lapangan & Lab |
 | **Dosen** | Dra. Sri Wahyuni, M.Sc | `dosen@usu.ac.id` | `user123` | Simulasi Pengajuan Bebas Biaya (Kegiatan Akademik Resmi) |
 
----
-
-## BAB VII: PANDUAN PRESENTASI & NASKAH VIDEO DEMO (5-10 MENIT)
-
-Untuk memenuhi kriteria penilaian video demo (20%), berikut adalah alur naskah presentasi yang disarankan:
-1. **Menit 0:00 - 1:00 (Pembukaan & Latar Belakang):**
-   - Salam pembuka, sebutkan nama kelompok, prodi D3 Teknik Informatika Vokasi USU.
-   - Jelaskan judul yang dipilih: *Judul 2 - E-Booking & E-Payment Fasilitas Kampus*.
-   - Tunjukkan permasalahan bentrok jadwal di kampus yang diselesaikan oleh sistem ini.
-2. **Menit 1:00 - 3:00 (Fitur Pengguna & Kalender):**
-   - Demonstrasikan halaman beranda dan katalog fasilitas.
-   - Buka menu **Kalender Jadwal Real-time (FullCalendar.js)**, tunjukkan event-event yang sudah terisi.
-   - Lakukan login 1-klik sebagai Mahasiswa.
-3. **Menit 3:00 - 5:30 (Transaksi E-Booking & E-Payment Anti-Bentrok):**
-   - Masuk ke formulir booking, coba masukkan jam yang sengaja dibentrokkan untuk memperlihatkan validasi merah anti-bentrok.
-   - Pilih slot yang tersedia (muncul indikator hijau).
-   - Lanjutkan ke halaman checkout, tunjukkan simulasi QRIS Nasional dan Virtual Account BNI USU beserta timer hitung mundur.
-   - Klik bayar simulasi sukses dan tunjukkan E-Ticket resmi ber-QR Code.
-4. **Menit 5:30 - 7:30 (Verifikasi Tiket & Panel Admin):**
-   - Buka fitur **Verifikasi Tiket QR** (`/verify.php`) untuk mensimulasikan peran satpam/petugas lab yang melakukan *Check-in* peminjam di lokasi.
-   - Logout, lalu login sebagai **Admin Sarpras**.
-   - Tunjukkan visualisasi grafik frekuensi peminjaman (Chart.js) dan kartu KPI pendapatan kas.
-   - Lakukan approval atau penolakan dengan input catatan resmi.
-5. **Menit 7:30 - 9:00 (CRUD & Laporan Rekapitulasi Kas):**
-   - Tunjukkan menu CRUD Fasilitas (tambah/edit ruangan).
-   - Tunjukkan menu Laporan: filter rentang tanggal, tombol ekspor file CSV untuk Excel, dan pratinjau cetak PDF ber-Kop Surat Resmi Universitas Sumatera Utara.
-6. **Menit 9:00 - 10:00 (Penutup):**
-   - Kesimpulan mengenai manfaat sistem bagi tata kelola kampus modern (*Smart Campus*).
-   - Ucapan terima kasih kepada dosen pengampu mata kuliah E-Application D3 TI USU.
